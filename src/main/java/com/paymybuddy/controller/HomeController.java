@@ -1,19 +1,25 @@
 package com.paymybuddy.controller;
 
+import com.paymybuddy.model.User;
+import com.paymybuddy.repository.UserRepository;
 import com.paymybuddy.service.UserConnectionService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.security.core.Authentication;
 
 @Controller
 public class HomeController {
 
     private final UserConnectionService userConnectionService;
+    private final UserRepository userRepository;
 
-    public HomeController(UserConnectionService userConnectionService) {
+    public HomeController(UserConnectionService userConnectionService,
+                          UserRepository userRepository) {
         this.userConnectionService = userConnectionService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/login")
@@ -26,11 +32,6 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
     @GetMapping("/add-connection")
     public String addConnection() {
         return "add-connection";
@@ -41,8 +42,7 @@ public class HomeController {
             Authentication authentication,
             @RequestParam String email) {
 
-        String currentUserEmail =
-                authentication.getName();
+        String currentUserEmail = authentication.getName();
 
         userConnectionService.addConnection(
                 currentUserEmail,
@@ -51,10 +51,16 @@ public class HomeController {
         return "redirect:/add-connection";
     }
 
-
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(Authentication authentication, Model model) {
+
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow();
+
+        model.addAttribute("user", user);
+
         return "profile";
     }
 }
-
