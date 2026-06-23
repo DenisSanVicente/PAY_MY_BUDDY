@@ -28,7 +28,6 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/login",
                                 "/register",
-                                "/transfer",
                                 "/css/**"
                         ).permitAll()
                         .anyRequest().authenticated()
@@ -36,6 +35,7 @@ public class SecurityConfig {
 
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/transfer", true)
                         .permitAll()
                 );
 
