@@ -26,9 +26,11 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
 
     public void registerUser(String username,
                              String email,
