@@ -37,15 +37,6 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Account account;
 
-    // ===== TRANSACTIONS ENVOYÉES =====
-
-    @OneToMany(mappedBy = "sender")
-    private List<Transaction> sentTransactions = new ArrayList<>();
-
-    // ===== TRANSACTIONS REÇUES =====
-
-    @OneToMany(mappedBy = "receiver")
-    private List<Transaction> receivedTransactions = new ArrayList<>();
 
     // ===== CONNEXIONS (AMIS) =====
 

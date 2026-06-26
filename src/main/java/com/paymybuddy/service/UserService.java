@@ -1,5 +1,6 @@
 package com.paymybuddy.service;
 
+import com.paymybuddy.exception.EmailAlreadyExistsException;
 import com.paymybuddy.model.Account;
 import com.paymybuddy.model.User;
 import com.paymybuddy.repository.AccountRepository;
@@ -34,7 +35,7 @@ public class UserService {
                              String password) {
 
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new RuntimeException("Cet email est déjà utilisé");
+            throw new EmailAlreadyExistsException("Cet email est déjà utilisé");
         }
 
         User user = new User();

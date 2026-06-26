@@ -1,5 +1,9 @@
 package com.paymybuddy.service;
 
+import com.paymybuddy.exception.AccountNotFoundException;
+import com.paymybuddy.exception.InsufficientBalanceException;
+import com.paymybuddy.exception.InvalidOperationException;
+import com.paymybuddy.exception.UserNotFoundException;
 import com.paymybuddy.model.Account;
 import com.paymybuddy.model.User;
 import com.paymybuddy.repository.AccountRepository;
@@ -38,31 +42,31 @@ public class TransactionService {
         // Recherche de l'expéditeur
         User sender = userRepository.findByEmail(senderEmail)
                 .orElseThrow(() ->
-                        new RuntimeException("Expéditeur introuvable"));
+                        new UserNotFoundException("Expéditeur introuvable"));
 
         // Recherche du destinataire
         User receiver = userRepository.findByEmail(receiverEmail)
                 .orElseThrow(() ->
-                        new RuntimeException("Destinataire introuvable"));
+                        new UserNotFoundException("Destinataire introuvable"));
 
         // Vérification du montant
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException(
+            throw new InvalidOperationException(
                     "Le montant doit être supérieur à zéro");
         }
 
         // Récupération des comptes
         Account senderAccount = accountRepository.findByUser(sender)
                 .orElseThrow(() ->
-                        new RuntimeException("Compte expéditeur introuvable"));
+                        new AccountNotFoundException("Compte expéditeur introuvable"));
 
         Account receiverAccount = accountRepository.findByUser(receiver)
                 .orElseThrow(() ->
-                        new RuntimeException("Compte destinataire introuvable"));
+                        new AccountNotFoundException("Compte destinataire introuvable"));
 
         // Vérification du solde
         if (senderAccount.getBalance().compareTo(amount) < 0) {
-            throw new RuntimeException(
+            throw new InsufficientBalanceException(
                     "Solde insuffisant");
         }
 

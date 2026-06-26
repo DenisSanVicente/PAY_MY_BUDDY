@@ -1,4 +1,4 @@
-package com.paymybuddy.config;
+package com.paymybuddy.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
