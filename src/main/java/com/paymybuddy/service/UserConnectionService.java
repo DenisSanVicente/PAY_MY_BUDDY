@@ -13,20 +13,20 @@ import org.springframework.stereotype.Service;
 public class UserConnectionService {
 
     private final UserConnectionRepository userConnectionRepository;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserConnectionService(UserConnectionRepository userConnectionRepository, UserRepository userRepository) {
         this.userConnectionRepository = userConnectionRepository;
         this.userRepository = userRepository;
     }
 
-    public void addConnection(String userEmail, String connetionEmail) {
+    public void addConnection(String userEmail, String connectionEmail) {
 
         // ===== RECHERCHE DE L'UTILISATEUR ===== //
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable "));
 
-        User connection = userRepository.findByEmail(connetionEmail)
+        User connection = userRepository.findByEmail(connectionEmail)
                 .orElseThrow(() -> new UserNotFoundException("Contact introuvable"));
 
         // ===== VERIFICATION QUE USER ET USER CONNECTION EXISTENT ===== //

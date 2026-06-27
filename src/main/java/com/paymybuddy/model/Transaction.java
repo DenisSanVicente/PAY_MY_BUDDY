@@ -23,7 +23,7 @@ public class Transaction {
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 255)
     private String description;
 
     @Column(name = "date_transaction", nullable = false)

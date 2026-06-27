@@ -1,4 +1,4 @@
-package com.paymybuddy.controller;
+package com.paymybuddy.integration;
 
 import com.paymybuddy.model.Transaction;
 import com.paymybuddy.model.User;

@@ -41,5 +41,5 @@ public class User {
     // ===== CONNEXIONS (AMIS) =====
 
     @OneToMany(mappedBy = "user")
-    private List<UserConnection> contacts = new ArrayList<>();
+    private List<UserConnection> connections = new ArrayList<>();
 }
