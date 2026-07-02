@@ -60,6 +60,7 @@ public class HomeController {
                 .orElseThrow();
 
         model.addAttribute("user", user);
+        model.addAttribute("amount", user.getAccount());
 
         return "profile";
     }

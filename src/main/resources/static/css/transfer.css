@@ -1,0 +1,121 @@
+body {
+margin: 0;
+padding: 0;
+background-color: #f5f5f5;
+font-family: Arial, sans-serif;
+}
+
+.container {
+width: 1200px;
+margin: 25px auto;
+padding: 40px;
+background-color: white;
+box-sizing: border-box;
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 80px;
+}
+
+.logo {
+font-size: 28px;
+font-weight: normal;
+}
+
+nav {
+display: flex;
+gap: 40px;
+}
+
+nav a {
+text-decoration: none;
+color: black;
+font-size: 18px;
+}
+
+nav a.active {
+color: #2f80ed;
+font-weight: bold;
+}
+
+.transfer-form {
+display: flex;
+align-items: center;
+gap: 25px;
+margin-bottom: 100px;
+}
+
+.transfer-form select {
+width: 280px;
+padding: 15px;
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+font-size: 16px;
+}
+
+.transfer-form input[type="text"] {
+width: 280px;
+padding: 15px;
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+font-size: 16px;
+}
+
+.transfer-form input[type="number"] {
+width: 90px;
+padding: 15px;
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+font-size: 16px;
+}
+
+.transfer-form button {
+background-color: #2f80ed;
+color: white;
+border: none;
+border-radius: 4px;
+padding: 15px 30px;
+font-size: 16px;
+cursor: pointer;
+}
+
+.transfer-form button:hover {
+opacity: 0.9;
+}
+
+.transactions {
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+padding: 15px;
+}
+
+.transactions h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 28px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th {
+text-align: left;
+padding: 15px;
+font-size: 18px;
+}
+
+td {
+padding: 15px;
+border-top: 1px solid #eeeeee;
+font-size: 18px;
+}
+
+th:last-child,
+td:last-child {
+text-align: right;
+}
