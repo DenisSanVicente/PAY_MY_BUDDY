@@ -1,4 +1,4 @@
-package com.paymybuddy.integration;
+package com.paymybuddy.controller;
 
 import com.paymybuddy.model.User;
 import com.paymybuddy.repository.UserRepository;
@@ -60,7 +60,7 @@ public class HomeController {
                 .orElseThrow();
 
         model.addAttribute("user", user);
-        model.addAttribute("amount", user.getAccount());
+        model.addAttribute("account", user.getAccount());
 
         return "profile";
     }

@@ -1,4 +1,4 @@
-package com.paymybuddy.integration;
+package com.paymybuddy.controller;
 
 import com.paymybuddy.service.UserService;
 import org.springframework.stereotype.Controller;
